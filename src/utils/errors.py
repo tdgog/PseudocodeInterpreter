@@ -9,7 +9,7 @@ class Error:
 
     def as_string(self):
         result = f'{self.error_name}: {self.details}'
-        result += f'\nFile {self.start.filename}, line {self.start.line + 1} & column {self.start.column + 1}'
+        result += f'\nFile {self.start.filename}, line {self.start.line + 1}'
         return result
 
 class IllegalCharError(Error):
@@ -19,3 +19,7 @@ class IllegalCharError(Error):
 class InvalidSyntaxError(Error):
     def __init__(self, start:u_position.Position, end:u_position.Position, details) -> None:
         super().__init__(start, end, 'InvalidSyntax', details)
+
+class RuntimeError(Error):
+    def __init__(self, start:u_position.Position, end:u_position.Position, details) -> None:
+        super().__init__(start, end, 'RuntimeError', details)

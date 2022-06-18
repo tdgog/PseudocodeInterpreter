@@ -1,8 +1,8 @@
-import utils.lexer as u_lexer
+import pseudocode
 
 while True:
     text = input(f'λ ')
-    result, error = u_lexer.run(f'λ', text)
+    result, error = pseudocode.run(f'λ', text)
 
     if error: 
         print(error.as_string())

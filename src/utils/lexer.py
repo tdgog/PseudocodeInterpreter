@@ -1,6 +1,5 @@
 from __future__ import annotations
 import utils.errors as u_error
-import utils.parser as u_parser
 import utils.tokens as u_token
 import utils.position as u_position
 
@@ -65,14 +64,3 @@ class Lexer:
         
         if dot_count == 0: return u_token.Token(u_token.TT_INT, int(num_str), start, self.position)
         return u_token.Token(u_token.TT_FLOAT, float(num_str), start, self.position)
-
-def run(filename, text):
-    lexer = Lexer(filename, text)
-    tokens, error = lexer.make_tokens()
-
-    if error: return None, error
-
-    parser = u_parser.Parser(tokens)
-    abstract_syntax_tree = parser.parse()
-
-    return abstract_syntax_tree.node, abstract_syntax_tree.error
