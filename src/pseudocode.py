@@ -15,7 +15,7 @@ def run(filename, text):
 
     # Run program
     interpreter = u_interpreter.Interpreter()
-    result = interpreter.visit(abstract_syntax_tree.node)
-
+    context = u_interpreter.Context(filename)
+    result = interpreter.visit(abstract_syntax_tree.node, context)
 
     return result.value, result.error
